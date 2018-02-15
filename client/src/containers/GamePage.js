@@ -15,6 +15,7 @@ class GamePage extends Component {
       this.restartTimer = this.restartTimer.bind(this)
       this.resetGame = this.resetGame.bind(this)
       this.setTotalTime = this.setTotalTime.bind(this)
+      this.saveGame = this.saveGame.bind(this)
 
       this.state = {
         index: 0,
@@ -62,6 +63,11 @@ startGame = () => {
   this.props.startGame()
   this.setTotalTime()
   this.startTimers()
+}
+
+saveGame = () => {
+  this.props.saveGameToDatabase(this.props.game.numberOfQuestions,this.props.game.topNumber,this.props.game.bottomNumber)
+
 }
 
 
@@ -126,6 +132,7 @@ renderOperationSymbol() {
 
         <button onClick={this.startGame}>Start Game</button>
         <button onClick={this.resetGame}>Reset Game</button>
+        <button onClick={this.saveGame}>Save Game</button>
         <br/>
 
         <h2>Time Left for Question: {this.state.questionTimeLeft}</h2>

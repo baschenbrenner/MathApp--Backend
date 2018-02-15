@@ -16,6 +16,12 @@ export const checkLoginCredentials = (username, password) => {
 
 }
 
+
+//
+// fetch('api/users/', {headers: {"Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1MTg4MTAzNzZ9.AzrPppfUA5SzAcGY_d2OPdj2ykcisNJjh6iqcydCB_4"} }).then(res => res.json())
+//       .catch(error => console.error('Error:', error))
+//       .then(response => console.log(response))
+
 // export const checkLoginCredentials = (username, password) => {
 //   let data = {username: username, password: password}
 //   fetch('/authenticate', {
@@ -47,5 +53,16 @@ export const getAllUsers = () => {
   }
 }
 
+export const saveGameToDatabase = () => {
+  return (dispatch) => {
+    dispatch({ type: 'SAVE_GAME_TO_USER'});
+  }
+}
+
+export const endSession = () => {
+  return (dispatch) => {
+    dispatch({ type: 'END_SESSION'});
+  }
+}
 
 //
