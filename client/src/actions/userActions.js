@@ -53,11 +53,6 @@ export const getAllUsers = () => {
   }
 }
 
-export const saveGameToDatabase = () => {
-  return (dispatch) => {
-    dispatch({ type: 'SAVE_GAME_TO_USER'});
-  }
-}
 
 export const endSession = () => {
   return (dispatch) => {

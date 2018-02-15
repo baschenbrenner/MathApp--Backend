@@ -49,3 +49,19 @@ export const changeGameParameters = (object) => {
     numberOfQuestions: object.numberOfQuestions
   };
 };
+
+export const saveGameToDatabase = (user) => {
+  debugger;
+  // fetch('api/users//games/')
+}
+export const checkLoginCredentials = (username, password) => {
+  let data = {username: username, password: password}
+  fetch('/authenticate', {
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }).then(response => response.json()).then(responseJson => console.log(responseJson))
+
+  }

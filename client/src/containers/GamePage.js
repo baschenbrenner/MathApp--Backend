@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setNumbersForGame, startGame, endGame, resetGame, addUnanswered } from '../actions/gameActions';
+import { setNumbersForGame, startGame, endGame, resetGame, addUnanswered, saveGameToDatabase } from '../actions/gameActions';
 import AnswerInput from '../components/AnswerInput';
 import ShowResults from '../components/ShowResults';
 import GameParameters from '../components/GameParameters';
@@ -66,7 +66,7 @@ startGame = () => {
 }
 
 saveGame = () => {
-  this.props.saveGameToDatabase(this.props.game.numberOfQuestions,this.props.game.topNumber,this.props.game.bottomNumber)
+  this.props.saveGameToDatabase(this.props.user)
 
 }
 
@@ -148,8 +148,9 @@ renderOperationSymbol() {
 
 const mapStateToProps = state => {
   return {
-    game: state.game
+    game: state.game,
+    user: state.user
   };
 }
 
-export default connect(mapStateToProps, { setNumbersForGame, startGame, endGame, resetGame, addUnanswered })(GamePage);
+export default connect(mapStateToProps, { setNumbersForGame, startGame, endGame, resetGame, addUnanswered, saveGameToDatabase})(GamePage);
