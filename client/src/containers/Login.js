@@ -6,35 +6,16 @@ import { getAllUsers, checkLoginCredentials } from '../actions/userActions';
 class Login extends Component {
   constructor() {
       super();
-      this.handleClick = this.handleClick.bind(this)
-      this.getUserGames = this.getUserGames.bind(this)
       this.handleOnSubmit = this.handleOnSubmit.bind(this)
 
       this.state = {
         username: "",
         password: "",
-        users: [],
-        user: null,
-        games: []
+        user: null
       };
     }
 
-    getUserGames() {
-      fetch('api/users/1').then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => this.setState({
-        user: response.user,
-        games: response.games
-      }));
-    }
-    handleClick() {
-      fetch('api/users/').then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => this.setState({
-        users: response
-      }));
 
-    }
 
     handleOnSubmit(e) {
       e.preventDefault();
@@ -56,23 +37,6 @@ class Login extends Component {
     }
 
     render(){
-      const users = this.state.users.map((user) => {
-                return(
-                  <div key={user.id}>
-                    {user.username}
-                  </div>
-                )
-              })
-      const games = this.state.games.map((game) => {
-        return(
-          <div key={game.id}>
-            Type of Game:{game.operation}<br/>
-            Time Per Question:{game.time_per_question}<br/>
-            Number of Questions:{game.number_of_questions}<br/>
-            Percent Correct:{game.number_correct/game.number_of_questions*100}%
-          </div>
-        )
-      })
       return (
         <div>
         <form style={{ marginTop: '16px' }} onSubmit={this.handleOnSubmit} >
@@ -88,10 +52,6 @@ class Login extends Component {
               value={this.state.password}/><br/>
           <input type="submit" value="Login" />
         </form>
-        <button onClick={this.handleClick}>Fetch</button>
-        {users}
-        <button onClick={this.getUserGames}>Get User Games</button>
-        Games: {games}
         </div>
       );
     }
@@ -101,8 +61,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-      checkLoginCredentials: checkLoginCredentials,
-      getAllUsers: getAllUsers
+      checkLoginCredentials: checkLoginCredentials
     }, dispatch);
   };
 

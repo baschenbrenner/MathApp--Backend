@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games = User.find(params[:user_id]).games
     render json: @games
   end
 
@@ -16,6 +16,6 @@ class GamesController < ApplicationController
     render json: @game
   end
 
- 
+
 
 end
