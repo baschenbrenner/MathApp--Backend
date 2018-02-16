@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAllUsers, checkLoginCredentials } from '../actions/userActions';
+import { checkLoginCredentials } from '../actions/userActions';
 
 class Login extends Component {
   constructor() {

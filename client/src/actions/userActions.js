@@ -21,11 +21,11 @@ export const getResults = (user) => {
     dispatch({ type: 'LOADING_GAMES' });
     let userId = user.user.user_id;
     let authToken = user.user.auth_token
-    return fetch(`api/users/${userId}/games`, {headers: {
+    return fetch(`../api/users/${userId}/games`, {headers: {
       'Authorization': `${authToken}` }})
         .then((response) =>  response.json())
-        .then(responseJson => {console.log("hey")});
-
+        .then(responseJson => dispatch({ type: 'UPDATE_GAMES', payload: responseJson}));
+//
   }
 }
 
