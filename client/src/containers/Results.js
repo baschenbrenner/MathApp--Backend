@@ -14,7 +14,17 @@ class Results extends Component {
 
 
   render(){
-    const results = this.props.user.games.map(result => <li key={result.id}>{result.operation}</li>)
+    const results = this.props.user.games.map((result) => (
+      <div key={result.id}>
+        <ul>
+        <li>Operation:{result.operation}</li>
+        <li>Time Per Question:{result.time_per_question}</li>
+        <li>Number of Questions:{result.number_of_questions}</li>
+        <li>Percent Correct:{Math.floor(result.number_correct/result.number_of_questions*100)}%</li>
+        </ul>
+      </div>
+    )
+      )
     return(
       <div>
         <button onClick={this.handleOnClick}>See Results</button>
