@@ -18,7 +18,7 @@ export default function userReducer(state = {loading: false, user: null, games: 
     case 'GET_USERS':
       console.log(action.payload)
       return Object.assign({}, state, {loading: false, users: state.users.concat(action.payload)})
-      
+        
     case 'END_SESSION':
        return Object.assign({}, state, {user: null})
 

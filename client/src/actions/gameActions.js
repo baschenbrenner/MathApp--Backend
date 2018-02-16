@@ -51,11 +51,11 @@ export const changeGameParameters = (object) => {
 };
 
 export const saveGameToDatabase = (user, gameData) => {
-  debugger;
   return (dispatch) => {
   let userId = user.user.user_id;
   let authToken = user.user.auth_token;
   let data = gameData;
+  dispatch({ type: 'SAVE_GAME'});
   return fetch(`api/users/${userId}/games`, {
           body: JSON.stringify(data),
           headers: {
@@ -63,6 +63,6 @@ export const saveGameToDatabase = (user, gameData) => {
             'Authorization': `${authToken}`
           },
           method: 'POST'
-        }).then(response => response.json()).then(responseJson => console.log(responseJson))
+        }).then(response =>  response.json()).then(responseJson => console.log(responseJson))
     }
 }

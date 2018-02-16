@@ -69,9 +69,22 @@ export default (state = {
 
       return Object.assign({}, state, {numberCorrect: newNumberCorrect, numberIncorrect: newNumberIncorrect})
 
+      
+    case 'SAVE_GAME':
+      return Object.assign({}, state, {
+        numberSetA: [],
+        numberSetB: [],
+        operation: "multiplication",
+        timePerQuestion: 5,
+        numberOfQuestions: 10,
+        topNumber: 12,
+        bottomNumber: 7,
+        numberCorrect: 0,
+        numberIncorrect: 0,
+        numberUnanswered: 0,
+        status: "unstarted"
 
-    case 'FETCH_MOVIES':
-      return {}
+      })
 
     default:
       return state;
