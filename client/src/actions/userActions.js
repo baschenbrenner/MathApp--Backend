@@ -15,7 +15,6 @@ export const checkLoginCredentials = (username, password) => {
 }
 
 
-
 export const getResults = (user) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_GAMES' });
@@ -25,7 +24,6 @@ export const getResults = (user) => {
       'Authorization': `${authToken}` }})
         .then((response) =>  response.json())
         .then(responseJson => dispatch({ type: 'UPDATE_GAMES', payload: responseJson}));
-//
   }
 }
 
@@ -35,4 +33,6 @@ export const endSession = () => {
   }
 }
 
-//
+export const makeNewUser = (userObject) => {
+  debugger;
+}
