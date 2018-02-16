@@ -50,18 +50,19 @@ export const changeGameParameters = (object) => {
   };
 };
 
-export const saveGameToDatabase = (user) => {
+export const saveGameToDatabase = (user, gameData) => {
   debugger;
-  // fetch('api/users//games/')
+  return (dispatch) => {
+  let userId = user.user.user_id;
+  let authToken = user.user.auth_token;
+  let data = gameData;
+  return fetch(`api/users/${userId}/games`, {
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${authToken}`
+          },
+          method: 'POST'
+        }).then(response => response.json()).then(responseJson => console.log(responseJson))
+    }
 }
-export const checkLoginCredentials = (username, password) => {
-  let data = {username: username, password: password}
-  fetch('/authenticate', {
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST'
-      }).then(response => response.json()).then(responseJson => console.log(responseJson))
-
-  }

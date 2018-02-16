@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { setNumbersForGame, startGame, endGame, resetGame, addUnanswered, saveGameToDatabase } from '../actions/gameActions';
 import AnswerInput from '../components/AnswerInput';
 import ShowResults from '../components/ShowResults';
@@ -66,7 +67,8 @@ startGame = () => {
 }
 
 saveGame = () => {
-  this.props.saveGameToDatabase(this.props.user)
+  let gameData = this.props.game
+  this.props.saveGameToDatabase(this.props.user, gameData)
 
 }
 
@@ -146,6 +148,17 @@ renderOperationSymbol() {
   }
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+      endGame: endGame,
+      startGame: startGame,
+      setNumbersForGame: setNumbersForGame,
+      resetGame: resetGame,
+      addUnanswered: addUnanswered,
+      saveGameToDatabase: saveGameToDatabase
+    }, dispatch);
+  };
+
 const mapStateToProps = state => {
   return {
     game: state.game,
@@ -153,4 +166,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { setNumbersForGame, startGame, endGame, resetGame, addUnanswered, saveGameToDatabase})(GamePage);
+export default connect(mapStateToProps, mapDispatchToProps)(GamePage);

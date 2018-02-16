@@ -18,20 +18,6 @@ class Login extends Component {
         games: []
       };
     }
-    // componenDidMount() {
-    //   return fetch('api/users/')
-    //       .then((response) => {return response.json()})
-    //       .then(data => {
-    //         let users = data.results.map((user) =>{
-    //           return(
-    //             <div key=user.id>
-    //               {user.username}
-    //             </div>
-    //           )
-    //         })
-    //         this.setState({users: users});
-    //        })
-    // }
 
     getUserGames() {
       fetch('api/users/1').then(res => res.json())
