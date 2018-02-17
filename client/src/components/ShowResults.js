@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Finished(props) {
-  return <div><h1>Correct: {props.correct} Incorrect: {props.incorrect} Unanswered: {props.unanswered} Time Left: {props.timeLeft}</h1></div>;
+  return <div><h1>Correct: {props.correct} Incorrect: {props.incorrect} Unanswered: {props.unanswered}</h1><h2> Time Left: {props.timeLeft}</h2></div>;
 }
 
 function Unstarted(props) {

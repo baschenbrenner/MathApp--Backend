@@ -5,6 +5,7 @@ import { setNumbersForGame, startGame, endGame, resetGame, addUnanswered, saveGa
 import AnswerInput from '../components/AnswerInput';
 import ShowResults from '../components/ShowResults';
 import GameParameters from '../components/GameParameters';
+import '../stylesheets/gamePage.css';
 
 class GamePage extends Component {
   constructor() {
@@ -124,24 +125,11 @@ renderGameParametersIfLoggedIn(props) {
 
 renderSaveButton(props) {
   if (props.user !== null)
-  {return <button onClick={this.saveGame}>Save Game</button>}
+  {return <button className="ButtonStyle" onClick={this.saveGame}>Save Game</button>}
 }
 
   render() {
-    let divStyle ={
-      backgroundColor: '#cfc',
-      padding: 10,
-      width: 100
-    }
-    let buttonStyle =
-    {
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'inline-block',
-    fontSize: 16
-    }
+
 
 
     return (
@@ -149,9 +137,8 @@ renderSaveButton(props) {
         {this.renderGameParametersIfLoggedIn(this.props.user)}
         <br/>
         Solve this:
-        <p>
-          <div style={divStyle}>{this.props.game.numberSetA[this.state.index]} {this.renderOperationSymbol()} {this.props.game.numberSetB[this.state.index]}</div>
-        </p>
+          <div className="ShowProblem">{this.props.game.numberSetA[this.state.index]} {this.renderOperationSymbol()} {this.props.game.numberSetB[this.state.index]}</div>
+
         <AnswerInput index={this.state.index} restartTimer={this.restartTimer}/>
         <br/>
         <br/>
@@ -164,8 +151,8 @@ renderSaveButton(props) {
          timeLeft={this.state.totalTimeLeft}/>
         <br/>
 
-        <button style={buttonStyle} onClick={this.startGame}>Start Game</button>
-        <button style={buttonStyle} onClick={this.resetGame}>Reset Game</button>
+        <button className="ButtonStyle" onClick={this.startGame}>Start Game</button>
+        <button className="ButtonStyle" onClick={this.resetGame}>Reset Game</button>
         <br />
         {this.renderSaveButton(this.props.user)}
         <br/>

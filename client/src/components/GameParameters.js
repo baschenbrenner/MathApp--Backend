@@ -68,11 +68,11 @@ export class GameParameters extends React.Component {
                  name="numberOfQuestions"
                  value={this.state.numberOfQuestions}
                  onChange={this.handleQChange}
-                 placeHolder="How many questions do you want?"
+                 placeholder="How many questions do you want?"
                  /> <br/>
 
-         <div class="slidecontainer">
-            <input type="range" min="5" max="10" value={this.state.timePerQuestion} class="slider" id="timePerQuestion" onChange={this.handleSliderChange}/>
+         <div className="slidecontainer">
+            <input type="range" min="5" max="10" value={this.state.timePerQuestion} className="slider" id="timePerQuestion" onChange={this.handleSliderChange}/>
           </div>
           Time Per Question: <div id="demo">{this.state.timePerQuestion}</div>
 
@@ -81,7 +81,7 @@ export class GameParameters extends React.Component {
                  name="bottomNumber"
                  value={this.state.bottomNumber}
                  onChange={this.handleBottomChange}
-                 placeHolder="Bottom Number"
+                 placeholder="Bottom Number"
                  />
           and
           <input type="text"
@@ -93,8 +93,8 @@ export class GameParameters extends React.Component {
           <input type="submit" onClick={this.handleSubmit}/> <br/>
           Operation <br/>
           <div onChange={this.handleOpChange}>
-          <input type="radio" name="operation" value="multiplication" id="mult" checked={this.state.operation === "multiplication"}/> Multiplication<br/>
-          <input type="radio" name="operation" value="addition" id="add" checked={this.state.operation === "addition"}/> Addition<br/>
+            <input type="radio" name="operation" value="multiplication" id="mult" checked={(this.state.operation === "multiplication")}/> Multiplication<br/>
+            <input type="radio" name="operation" value="addition" id="add" checked={(this.state.operation === "addition")}/> Addition<br/>
           </div>
         </form>
       </div>

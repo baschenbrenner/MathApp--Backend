@@ -14,13 +14,13 @@ class Results extends Component {
 
 
   render(){
-    const results = this.props.user.games.map((result) => (
+    const results = this.props.user.games.map((result,index) => (
       <div key={result.id}>
-        <ul>
-        <li>Operation:{result.operation}</li>
-        <li>Time Per Question:{result.time_per_question}</li>
-        <li>Number of Questions:{result.number_of_questions}</li>
-        <li>Percent Correct:{Math.floor(result.number_correct/result.number_of_questions*100)}%</li>
+        <ul> Game {index+1}
+        <li>Operation: {result.operation}</li>
+        <li>Time Per Question: {result.time_per_question}</li>
+        <li>Number of Questions: {result.number_of_questions}</li>
+        <li>Percent Correct: {Math.floor(result.number_correct/result.number_of_questions*100)}%</li>
         </ul>
       </div>
     )
