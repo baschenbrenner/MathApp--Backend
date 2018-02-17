@@ -108,13 +108,13 @@ renderOperationSymbol() {
   {return "x"}
   else if (this.props.game.operation === "addition")
   {return "+"}
-  else {return "x"}
+  else {return ""}
 }
 
   render() {
     //const {match, game} = this.props
     return (
-      <div>
+      <div align="center">
         <GameParameters />
         <br/> Solve this:
         <p>
@@ -138,10 +138,8 @@ renderOperationSymbol() {
         <br/>
 
         <h2>Time Left for Question: {this.state.questionTimeLeft}</h2>
-        <br/>
-        <br/>
-        <br/>
-        <h3>Time Left for Game: {this.state.totalTimeLeft}</h3>
+
+        <h2>Time Left for Game: {this.state.totalTimeLeft}</h2>
 
       </div>
     )
