@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { checkLoginCredentials } from '../actions/userActions';
+import { checkLoginCredentials, endSession } from '../actions/userActions';
 
 class Login extends Component {
   constructor() {
@@ -20,8 +20,9 @@ class Login extends Component {
     handleOnSubmit(e) {
       e.preventDefault();
       this.props.checkLoginCredentials(this.state.username,this.state.password)
-      const { history } = this.props
-      history.push('/game')
+      if (this.props.user.user !== null)
+      {const { history } = this.props
+      history.push('/game')}
     }
 
     handleOnUsernameChange = event => {
@@ -61,7 +62,8 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-      checkLoginCredentials: checkLoginCredentials
+      checkLoginCredentials: checkLoginCredentials,
+      endSesion: endSession
     }, dispatch);
   };
 
