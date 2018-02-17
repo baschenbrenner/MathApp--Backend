@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 export class ShowProblem extends Component {
 
     render(){
       return (
-        {this.props.setA[1]} x {this.props.setB[1]}
+        <div className="ShowProblem">
+        Solve this:
+          {this.props.firstNumber} {this.props.operationSymbol} {this.props.secondNumber}
+        </div>
       );
     }
 }
 
-const mapStateToProps = state => {
-  return {
-    setA: numberSetA,
-    setB: numberSetB
-  }
-}
 
-export default connect(mapStateToProps)(ShowProblem)
+
+export default ShowProblem;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setNumbersForGame, startGame, endGame, resetGame, addUnanswered, saveGameToDatabase } from '../actions/gameActions';
 import AnswerInput from '../components/AnswerInput';
+import ShowProblem from '../components/ShowProblem';
 import ShowResults from '../components/ShowResults';
 import GameParameters from '../components/GameParameters';
 import '../stylesheets/gamePage.css';
@@ -136,9 +137,7 @@ renderSaveButton(props) {
       <div align="center">
         {this.renderGameParametersIfLoggedIn(this.props.user)}
         <br/>
-        Solve this:
-          <div className="ShowProblem">{this.props.game.numberSetA[this.state.index]} {this.renderOperationSymbol()} {this.props.game.numberSetB[this.state.index]}</div>
-
+        <ShowProblem firstNumber={this.props.game.numberSetA[this.state.index]} operationSymbol={this.renderOperationSymbol()} secondNumber={this.props.game.numberSetB[this.state.index]} />
         <AnswerInput index={this.state.index} restartTimer={this.restartTimer}/>
         <br/>
         <br/>
