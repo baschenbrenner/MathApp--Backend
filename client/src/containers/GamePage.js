@@ -149,12 +149,13 @@ renderSaveButton(props) {
          unanswered={this.props.game.numberUnanswered}
          timeLeft={this.state.totalTimeLeft}/>
         <br/>
-
-        <button className="ButtonStyle" onClick={this.startGame}>Start Game</button>
-        <button className="ButtonStyle" onClick={this.resetGame}>Reset Game</button>
-        <br />
-        {this.renderSaveButton(this.props.user)}
-        <br/>
+        <div id="buttons">
+          <button className="ButtonStyle" onClick={this.startGame}>Start Game</button>
+          <button className="ButtonStyle" onClick={this.resetGame}>Reset Game</button>
+          <br />
+          {this.renderSaveButton(this.props.user)}
+        </div>
+          <br/>
 
         <h2>Time Left for Question: {this.state.questionTimeLeft}</h2>
 

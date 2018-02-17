@@ -8,7 +8,7 @@ export default function userReducer(state = {loading: false, user: null, games: 
       { alert(action.payload.error.user_authentication)
         return Object.assign({}, state, {loading: false})}
     else
-      {return Object.assign({}, state, {loading: false, user: action.payload})}
+      { return Object.assign({}, state, {loading: false, user: action.payload})}
 
     case 'LOADING_GAMES':
       return Object.assign({}, state, {loading: true})

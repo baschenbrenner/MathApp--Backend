@@ -58,36 +58,50 @@ class Signup extends Component {
 
     render(){
       return (
-        <div>
+        <div className="container">
         <form style={{ marginTop: '16px' }} onSubmit={this.handleOnSubmit} >
-          Username: <input
-            type="text"
-            onChange={this.handleOnUsernameChange}
-            placeholder="Username"
-            value={this.state.username}/><br/>
-            Password:
-            <input
-              type="password"
-              onChange={this.handleOnPasswordChange}
-              value={this.state.password}/><br/>
-            Confirm Password:
-            <input
-              type="password"
-              onChange={this.handleOnPasswordConfirmChange}
-              value={this.state.passwordConfirm}/><br/>
-              First Name:
-            <input
-              type="text"
-              onChange={this.handleOnFirstNameChange}
-              placeholder="First Name"
-              value={this.state.firstName}/><br/>
-              Last Name:
-            <input
-              type="text"
-              onChange={this.handleOnLastNameChange}
-              placeholder="Last Name"
-              value={this.state.lastName}/><br/>
-          <input type="submit" value="Signup" />
+          <div className="row">
+            <div className="col-md-3">
+                      Username: <br/>
+                      <input
+                        type="text"
+                        onChange={this.handleOnUsernameChange}
+                        placeholder="Username"
+                        value={this.state.username}/>
+            </div>
+            <div className="col-md-3">
+                        Password: <br/>
+                        <input
+                          type="password"
+                          onChange={this.handleOnPasswordChange}
+                          placeholder="password"
+                          value={this.state.password}/><br/>
+                        Confirm Password: <br/>
+                        <input
+                          type="password"
+                          onChange={this.handleOnPasswordConfirmChange}
+                          placeholder="password"
+                          value={this.state.passwordConfirm}/>
+            </div>
+            <div className="col-md-3">
+                          First Name: <br/>
+                        <input
+                          type="text"
+                          onChange={this.handleOnFirstNameChange}
+                          placeholder="First Name"
+                          value={this.state.firstName}/>
+            </div>
+            <div className="col-md-3">
+                          Last Name: <br/>
+                        <input
+                          type="text"
+                          onChange={this.handleOnLastNameChange}
+                          placeholder="Last Name"
+                          value={this.state.lastName}/>
+                              <br/><br/>
+                      <input type="submit" value="Signup" />
+            </div>
+          </div>
         </form>
         </div>
       );
