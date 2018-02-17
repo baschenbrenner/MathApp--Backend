@@ -31,6 +31,8 @@ increaseIndex() {
   })
 }
 
+
+
 subtractTime() {
   let totalLeft = this.state.totalTimeLeft - 1
   let questionTimeLeft = this.state.questionTimeLeft - 1
@@ -68,7 +70,11 @@ startGame = () => {
 
 saveGame = () => {
   let gameData = this.props.game
-  this.props.saveGameToDatabase(this.props.user, gameData)
+  if (gameData.status === "finished")
+   {this.props.saveGameToDatabase(this.props.user, gameData)}
+  else {
+    alert("The game needs to be finished to be saved")
+  }
 
 }
 
@@ -85,11 +91,11 @@ restartTimer() {
 }
 
 resetGame() {
+  this.props.resetGame()
   this.setState({
     index: 0,
     questionTimeLeft: this.props.game.timePerQuestion
   })
-  this.props.resetGame()
 }
 
 setTotalTime() {
@@ -97,11 +103,11 @@ setTotalTime() {
     totalTimeLeft: this.props.game.timePerQuestion * this.props.game.numberOfQuestions
   })
 }
-componentDidUpdate() {
-  console.log("My index is " + this.state.index)
-  console.log(Date.now())
-
-}
+// componentDidUpdate() {
+//   console.log("My index is " + this.state.index)
+//   console.log(Date.now())
+//
+// }
 
 renderOperationSymbol() {
   if (this.props.game.operation === "multiplication")
@@ -111,14 +117,40 @@ renderOperationSymbol() {
   else {return ""}
 }
 
+renderGameParametersIfLoggedIn(props) {
+  if (props.user !== null)
+   {return <GameParameters />}
+}
+
+renderSaveButton(props) {
+  if (props.user !== null)
+  {return <button onClick={this.saveGame}>Save Game</button>}
+}
+
   render() {
-    //const {match, game} = this.props
+    let divStyle ={
+      backgroundColor: '#cfc',
+      padding: 10,
+      width: 100
+    }
+    let buttonStyle =
+    {
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: 16
+    }
+
+
     return (
       <div align="center">
-        <GameParameters />
-        <br/> Solve this:
+        {this.renderGameParametersIfLoggedIn(this.props.user)}
+        <br/>
+        Solve this:
         <p>
-          {this.props.game.numberSetA[this.state.index]} {this.renderOperationSymbol()} {this.props.game.numberSetB[this.state.index]}
+          <div style={divStyle}>{this.props.game.numberSetA[this.state.index]} {this.renderOperationSymbol()} {this.props.game.numberSetB[this.state.index]}</div>
         </p>
         <AnswerInput index={this.state.index} restartTimer={this.restartTimer}/>
         <br/>
@@ -132,9 +164,10 @@ renderOperationSymbol() {
          timeLeft={this.state.totalTimeLeft}/>
         <br/>
 
-        <button onClick={this.startGame}>Start Game</button>
-        <button onClick={this.resetGame}>Reset Game</button>
-        <button onClick={this.saveGame}>Save Game</button>
+        <button style={buttonStyle} onClick={this.startGame}>Start Game</button>
+        <button style={buttonStyle} onClick={this.resetGame}>Reset Game</button>
+        <br />
+        {this.renderSaveButton(this.props.user)}
         <br/>
 
         <h2>Time Left for Question: {this.state.questionTimeLeft}</h2>
