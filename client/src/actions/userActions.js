@@ -34,5 +34,20 @@ export const endSession = () => {
 }
 
 export const makeNewUser = (userObject) => {
-  debugger;
+  return (dispatch) => {
+    let data = {user: {
+      username: userObject.username,
+      password: userObject.password,
+      password_confirmation: userObject.passwordConfirm,
+      first_name: userObject.firstName,
+      last_name: userObject.lastName
+    }}
+    return fetch('/api/users', {
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }).then(response => response.json()).then(responseJson => console.log(responseJson))
+  }
 }

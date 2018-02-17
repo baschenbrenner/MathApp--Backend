@@ -114,7 +114,7 @@ renderOperationSymbol() {
   render() {
     //const {match, game} = this.props
     return (
-      <div>Game Page
+      <div>
         <GameParameters />
         <br/> Solve this:
         <p>

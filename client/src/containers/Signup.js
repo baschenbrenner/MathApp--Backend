@@ -23,7 +23,7 @@ class Signup extends Component {
       e.preventDefault();
       this.props.makeNewUser(this.state)
       const { history } = this.props
-      history.push('/game')
+      history.push('/login')
     }
 
     handleOnUsernameChange = event => {
@@ -70,15 +70,18 @@ class Signup extends Component {
               type="password"
               onChange={this.handleOnPasswordChange}
               value={this.state.password}/><br/>
+            Confirm Password:
             <input
               type="password"
               onChange={this.handleOnPasswordConfirmChange}
               value={this.state.passwordConfirm}/><br/>
+              First Name:
             <input
               type="text"
               onChange={this.handleOnFirstNameChange}
               placeholder="First Name"
               value={this.state.firstName}/><br/>
+              Last Name:
             <input
               type="text"
               onChange={this.handleOnLastNameChange}
