@@ -29,6 +29,7 @@ class AnswerInput extends Component {
     render(){
       return (
         <form style={{ marginTop: '16px' }} onSubmit={this.handleOnSubmit} >
+          <h2> {this.props.gameStatus} </h2>
           <input
             type="text"
             onChange={this.handleOnChange}

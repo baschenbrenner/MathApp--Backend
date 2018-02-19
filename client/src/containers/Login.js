@@ -20,7 +20,7 @@ class Login extends Component {
     handleOnSubmit(e) {
       e.preventDefault();
       this.props.checkLoginCredentials(this.state.username,this.state.password)
-      if (this.props.user.user !== null)
+      // if (this.props.user.user !== null)
       {const { history } = this.props
       history.push('/game')}
     }

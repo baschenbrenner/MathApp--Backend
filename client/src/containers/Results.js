@@ -26,7 +26,7 @@ class Results extends Component {
     )
       )
     return(
-      <div>
+      <div className="container">
         <button onClick={this.handleOnClick}>See Results</button>
         {results}
       </div>

@@ -27,7 +27,7 @@ export default (state = {
         {setA[i]= Math.floor(Math.random() * (t-b+1))+b;
          setB[i]= Math.floor(Math.random() * (t-b+1))+b;}
 
-      return Object.assign({}, state, { numberSetA: setA, numberSetB: setB})
+      return Object.assign({}, state, { numberSetA: setA, numberSetB: setB, numberCorrect: 0, numberIncorrect: 0, numberUnanswered: 0})
 
     case 'START_GAME':
       return Object.assign({},state, {status: "started"})
@@ -69,7 +69,7 @@ export default (state = {
 
       return Object.assign({}, state, {numberCorrect: newNumberCorrect, numberIncorrect: newNumberIncorrect})
 
-      
+
     case 'SAVE_GAME':
       return Object.assign({}, state, {
         numberSetA: [],

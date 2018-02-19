@@ -1,7 +1,8 @@
 import React from 'react';
 
-const About = () =>
-    (
+const About = ({ match }) =>
+
+ (
 
             <div className="container" id="about">
               <h1> Math Facts App</h1>
@@ -15,6 +16,8 @@ const About = () =>
                     </p>
                     </div>
                   <div className="col-md-2"></div>
+                  Match Url{ match.url }
+                  
               </div>
               <h2> Instructions </h2>
               <p> The math app has many different parameters so you can make the app work for you. These are only accessible if you <a href="./signup">sign up</a></p>

@@ -1,7 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is designed to help students study math facts to develop automaticity. It was designed using Ruby as a backend and React/Redux as a frontend.
+
+
 
 Things you may want to cover:
 

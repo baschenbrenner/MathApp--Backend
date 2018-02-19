@@ -17,7 +17,7 @@ endSession() {
 
   render(){
     return(
-      <div id="logout">
+      <div id="logout" className="container">
         <h1> Are you sure you want to logout? </h1>
         <button onClick={this.endSession}>Yes, Log Me Out!</button>
       </div>

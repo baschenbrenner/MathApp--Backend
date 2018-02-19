@@ -27,6 +27,9 @@ class GamePage extends Component {
       };
     }
 
+componentWillMount() {
+  this.resetGame()
+}
 increaseIndex() {
   this.setState({
     index: this.state.index + 1,
@@ -44,7 +47,10 @@ subtractTime() {
   })
   if ((this.state.totalTimeLeft > 0) && (this.props.game.status === "started"))
   {
-      if (this.state.questionTimeLeft === 0)
+      if ((this.state.questionTimeLeft === 0) && (this.state.index === this.props.game.numberOfQuestions))
+        { this.props.addUnanswered();
+          this.props.endGame()}
+      else if (this.state.questionTimeLeft === 0)
         { this.props.addUnanswered()
           this.increaseIndex()
           this.setState({
@@ -63,7 +69,8 @@ startTimers() {
 startGame = () => {
   this.props.setNumbersForGame(this.props.game.numberOfQuestions,this.props.game.topNumber,this.props.game.bottomNumber)
   this.setState({
-    index: 1
+    index: 1,
+    questionTimeLeft: this.props.game.timePerQuestion
   })
   this.props.startGame()
   this.setTotalTime()
@@ -138,7 +145,7 @@ renderSaveButton(props) {
         {this.renderGameParametersIfLoggedIn(this.props.user)}
         <br/>
         <ShowProblem firstNumber={this.props.game.numberSetA[this.state.index]} operationSymbol={this.renderOperationSymbol()} secondNumber={this.props.game.numberSetB[this.state.index]} />
-        <AnswerInput index={this.state.index} restartTimer={this.restartTimer}/>
+        <AnswerInput index={this.state.index} restartTimer={this.restartTimer} gameStatus={this.props.game.status}/>
         <br/>
         <br/>
         <br/>
@@ -147,7 +154,8 @@ renderSaveButton(props) {
          correct={this.props.game.numberCorrect}
          incorrect={this.props.game.numberIncorrect}
          unanswered={this.props.game.numberUnanswered}
-         timeLeft={this.state.totalTimeLeft}/>
+         timeLeft={this.state.totalTimeLeft}
+         totalTime={this.props.game.timePerQuestion*this.props.game.numberOfQuestions}/>
         <br/>
         <div id="buttons">
           <button className="ButtonStyle" onClick={this.startGame}>Start Game</button>
