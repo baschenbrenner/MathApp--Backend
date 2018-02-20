@@ -19,8 +19,8 @@ class Results extends Component {
 
 
   render(){
-    const results = this.props.user.games.map((result,index) => (
-      <GameResult result={result} index={index} userId={this.props.user.user.user_id} userAuthToken={this.props.user.user.auth_token}/>
+    const results = this.props.user.games.map((result) => (
+      <GameResult result={result} gameId={result.id} userId={this.props.user.user.user_id} userAuthToken={this.props.user.user.auth_token}/>
     )
       )
     return(

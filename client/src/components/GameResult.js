@@ -17,17 +17,17 @@ class GameResult extends Component {
 
     render(){
 
-      const  { result, index }= this.props
+      const  { result, gameId }= this.props
       return(
 
         <div key={result.id}>
-          <ul> Game {index+1}
+          <ul> Game {gameId}
           <li>Operation: {result.operation}</li>
           <li>Time Per Question: {result.time_per_question}</li>
           <li>Number of Questions: {result.number_of_questions}</li>
           <li>Percent Correct: {Math.floor(result.number_correct/result.number_of_questions*100)}%</li>
           </ul>
-          Number Of Votes: {result.votes}
+          Number Of Votes: {result.votes} <br/>
           <button onClick={this.increaseVotes}>Vote Up</button>
         </div>
 
