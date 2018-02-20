@@ -83,7 +83,8 @@ export default (state = {
         numberCorrect: 0,
         numberIncorrect: 0,
         numberUnanswered: 0,
-        status: "unstarted"
+        status: "unstarted",
+        votes: 0
 
       })
 

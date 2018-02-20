@@ -17,6 +17,14 @@ class GamesController < ApplicationController
     render json: @game
   end
 
+  def vote_up
+    @user = User.find(params[:user_id])
+    @game = Game.find(params[:game_id])
+    @game.votes += 1
+    @game.save
+    render json: @game
+  end
+
 
 
 end

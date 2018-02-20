@@ -51,3 +51,24 @@ export const makeNewUser = (userObject) => {
       }).then(response => response.json()).then(responseJson => console.log(responseJson))
   }
 }
+
+export const voteUp = (user, gameId) => {
+  return (dispatch) => {
+    let userId = user.user.user_id;
+    let authToken = user.user.auth_token;
+    return fetch(`/api/users/${userId}/games/${gameId}/vote_up`,
+      {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${authToken}`
+        },
+        method: 'POST'
+      })
+      .then(response => response.json())
+      .then(responseJson => dispatch({type: 'VOTE_UP', payload: {gameId: responseJson.id, votes:responseJson.votes}}))
+
+
+
+
+  }
+}

@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { voteUp } from '../actions/userActions';
 
 class GameResult extends Component {
   constructor() {
       super();
-
+      this.increaseVotes = this.increaseVotes.bind(this)
 
     }
 
-    increaseVotes = () => {
-
-      this.setState({
-        votes: this.state.votes + 1
-      })
+    increaseVotes() {
+          this.props.voteUp(this.props.user, this.props.result.id)
     }
-
 
 
     render(){
@@ -30,7 +29,6 @@ class GameResult extends Component {
           </ul>
           Number Of Votes: {result.votes}
           <button onClick={this.increaseVotes}>Vote Up</button>
-          <button onClick={this.callApi}>Call Api</button>
         </div>
 
 
@@ -40,6 +38,14 @@ class GameResult extends Component {
     }
 }
 
+function mapStateToProps(state) {
+  return {user: state.user}
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    voteUp: voteUp
+  }, dispatch);
+};
 
-export default GameResult;
+export default connect(mapStateToProps, mapDispatchToProps)(GameResult);
