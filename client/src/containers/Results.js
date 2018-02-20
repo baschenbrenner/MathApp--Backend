@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getResults } from '../actions/userActions';
+import GameResult from '../components/GameResult';
 
 class Results extends Component {
   constructor() {
       super();
       this.handleOnClick = this.handleOnClick.bind(this)
+
+
+
+
     }
   handleOnClick() {
     this.props.getResults(this.props.user)
@@ -15,14 +20,7 @@ class Results extends Component {
 
   render(){
     const results = this.props.user.games.map((result,index) => (
-      <div key={result.id}>
-        <ul> Game {index+1}
-        <li>Operation: {result.operation}</li>
-        <li>Time Per Question: {result.time_per_question}</li>
-        <li>Number of Questions: {result.number_of_questions}</li>
-        <li>Percent Correct: {Math.floor(result.number_correct/result.number_of_questions*100)}%</li>
-        </ul>
-      </div>
+      <GameResult result={result} index={index} userId={this.props.user.user.user_id} userAuthToken={this.props.user.user.auth_token}/>
     )
       )
     return(
