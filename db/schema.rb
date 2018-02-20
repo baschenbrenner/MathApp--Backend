@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215053351) do
+ActiveRecord::Schema.define(version: 20180220010818) do
 
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180215053351) do
     t.integer "number_incorrect"
     t.integer "number_unanswered"
     t.string "status"
+    t.integer "votes"
   end
 
   create_table "items", force: :cascade do |t|

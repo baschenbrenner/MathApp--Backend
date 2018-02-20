@@ -11,7 +11,8 @@ class GamesController < ApplicationController
       number_of_questions: params[:numberOfQuestions],
       number_correct: params[:numberCorrect],
       number_incorrect: params[:numberIncorrect],
-      status: "saved")
+      status: "saved",
+      votes: 0 )
     @game.save
     render json: @game
   end

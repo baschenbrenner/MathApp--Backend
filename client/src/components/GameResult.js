@@ -3,11 +3,6 @@ import React, { Component } from 'react';
 class GameResult extends Component {
   constructor() {
       super();
-      //this.increaseVotes = this.increaseVotes.bind(this)
-      this.callApi = this.callApi.bind(this)
-      this.state = {
-        votes: 0
-      };
 
 
     }
@@ -19,25 +14,10 @@ class GameResult extends Component {
       })
     }
 
-    callApi() {
-      console.log('a')
-    fetch(`/api/users/${this.props.userId}/games`, {
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `${this.props.userAuthToken}`
-              }
-            })
-            .then(response =>  {
-              console.log('b')
-              return response.json()
-            })
-            .then(responseJson => console.log('c',responseJson))
-            .catch(err => console.log('d', err))
-            console.log('e')
-    // a c b e
-    }
+
 
     render(){
+
       const  { result, index }= this.props
       return(
 
@@ -48,7 +28,7 @@ class GameResult extends Component {
           <li>Number of Questions: {result.number_of_questions}</li>
           <li>Percent Correct: {Math.floor(result.number_correct/result.number_of_questions*100)}%</li>
           </ul>
-          Number Of Votes: {this.state.votes}
+          Number Of Votes: {result.votes}
           <button onClick={this.increaseVotes}>Vote Up</button>
           <button onClick={this.callApi}>Call Api</button>
         </div>
